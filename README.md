@@ -3,10 +3,22 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
 ## Installed packages/CDNs
- - Normalize
+
+- Normalize
+  - Standardizes the styling of elements across browsers
+- Prettier
+  - Code formatter which applies formatting on save
+- TSLint config prettier
+  - Prevents conflicts between TSLint & Prettier
+- Pretty quick
+  - Runs prettier only on changed files
+- Husky
+  - Git hooks
 
 ## Resources
- - https://stackoverflow.com/questions/38409773/angular-2-how-to-correctly-automatically-import-normalize-css
+
+- https://stackoverflow.com/questions/38409773/angular-2-how-to-correctly-automatically-import-normalize-css
+- https://www.daptontechnologies.com/angular-prettier-husky/
 
 ## Development server
 
