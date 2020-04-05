@@ -21,6 +21,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - https://stackoverflow.com/questions/38409773/angular-2-how-to-correctly-automatically-import-normalize-css
 - https://www.daptontechnologies.com/angular-prettier-husky/
 - https://fonts.google.com/specimen/Fira+Sans
+- https://www.paulirish.com/2012/box-sizing-border-box-ftw/
 
 ## Development server
 
