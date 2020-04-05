@@ -14,11 +14,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   - Runs prettier only on changed files
 - Husky
   - Git hooks
+- Fira Sans ( Google Fonts )
 
 ## Resources
 
 - https://stackoverflow.com/questions/38409773/angular-2-how-to-correctly-automatically-import-normalize-css
 - https://www.daptontechnologies.com/angular-prettier-husky/
+- https://fonts.google.com/specimen/Fira+Sans
 
 ## Development server
 
