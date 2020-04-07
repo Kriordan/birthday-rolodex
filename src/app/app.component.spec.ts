@@ -1,12 +1,14 @@
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
+      imports: [MatCardModule, MatButtonModule],
     }).compileComponents();
   }));
 
@@ -16,16 +18,18 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'birthday-rolodex'`, () => {
+  it(`should have as title 'Birthday Rolodex'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('birthday-rolodex');
+    expect(app.title).toEqual('Birthday Rolodex');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('birthday-rolodex app is running!');
+    expect(compiled.querySelector('h1').textContent).toContain(
+      'Birthday Rolodex'
+    );
   });
 });
