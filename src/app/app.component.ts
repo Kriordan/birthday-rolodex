@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +14,13 @@ export class AppComponent {
       birthday: new Date('March 31, 2004'),
     },
   ];
+  personForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    birthdate: new FormControl(''),
+  });
+
+  onSubmit() {
+    console.warn(this.personForm.value);
+  }
 }
