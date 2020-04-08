@@ -115,6 +115,10 @@
               "devServerTarget": "birthday-rolodex:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

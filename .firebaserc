@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "birthday-rolodex": {
+      "hosting": {
+        "birthday-rolodex": [
+          "birthday-rolodex"
+        ]
+      }
+    }
+  }
+}

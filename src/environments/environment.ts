@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyDak5MWEcGAqPysrIXRWuI9O_CYocZVT8M',
+    authDomain: 'birthday-rolodex.firebaseapp.com',
+    databaseURL: 'https://birthday-rolodex.firebaseio.com',
+    projectId: 'birthday-rolodex',
+    storageBucket: 'birthday-rolodex.appspot.com',
+    messagingSenderId: '876743281741',
+    appId: '1:876743281741:web:ce6c52072c4495c2532004',
+    measurementId: 'G-Q3H8EZ8D68',
+  },
 };
 
 /*

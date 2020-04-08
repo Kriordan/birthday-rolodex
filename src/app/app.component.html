@@ -36,12 +36,14 @@
   </section>
 
   <section class="card-collection">
-    <mat-card *ngFor="let person of people" class="example-card">
+    <mat-card *ngFor="let person of persons" class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{ person.name }}</mat-card-title>
+        <mat-card-title
+          >{{ person.firstName }} {{ person.lastName }}</mat-card-title
+        >
         <mat-card-subtitle>{{
-          person.birthday | date: 'MMMM d'
+          person.birthdate.toDate() | date: 'MMMM d'
         }}</mat-card-subtitle>
       </mat-card-header>
       <img
