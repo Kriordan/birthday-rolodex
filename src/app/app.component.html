@@ -36,7 +36,7 @@
   </section>
 
   <section class="card-collection">
-    <mat-card *ngFor="let person of persons" class="example-card">
+    <mat-card *ngFor="let person of persons | async" class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title
@@ -45,6 +45,14 @@
         <mat-card-subtitle>{{
           person.birthdate.toDate() | date: 'MMMM d'
         }}</mat-card-subtitle>
+        <mat-icon
+          class="card-delete"
+          icon
+          delete
+          color="error"
+          (click)="deletePerson(person.personId)"
+          >delete</mat-icon
+        >
       </mat-card-header>
       <img
         mat-card-image

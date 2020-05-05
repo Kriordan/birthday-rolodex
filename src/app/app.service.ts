@@ -25,4 +25,8 @@ export class AppService {
   addPerson(person) {
     this.afs.collection('persons').add(person);
   }
+
+  deletePerson(id) {
+    console.log(id);
+  }
 }

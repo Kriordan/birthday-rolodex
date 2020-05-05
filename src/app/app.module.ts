@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
@@ -30,6 +31,7 @@ import { environment } from 'src/environments/environment';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

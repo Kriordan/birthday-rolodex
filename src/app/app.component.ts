@@ -4,12 +4,18 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AppService } from './app.service';
 import { Person } from './person';
 
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/firestore';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  private personsCollection: AngularFirestoreCollection<Person>;
   public persons;
   public title = 'Birthday Rolodex';
 
@@ -19,17 +25,20 @@ export class AppComponent implements OnInit {
     birthdate: new FormControl('', Validators.required),
   });
 
-  constructor(private appService: AppService) {}
+  constructor(private afs: AngularFirestore) {}
 
   ngOnInit() {
-    this.appService.getPersons().subscribe((persons) => {
-      console.log(persons);
-      this.persons = persons;
-    });
+    this.personsCollection = this.afs.collection<Person>('persons');
+    this.persons = this.personsCollection.valueChanges({ idField: 'personId' });
+    this.persons.subscribe((x) => console.log(x));
   }
 
   onSubmit() {
-    this.appService.addPerson(this.personForm.value);
+    this.personsCollection.add(this.personForm.value);
     console.log(this.personForm.value);
+  }
+
+  deletePerson(personId) {
+    this.personsCollection.doc(personId).delete();
   }
 }
