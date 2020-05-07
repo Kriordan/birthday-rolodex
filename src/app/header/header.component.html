@@ -1,0 +1,11 @@
+<header class="header">
+  <h1 class="header-title">
+    Birthday Rolodex
+  </h1>
+  <ng-container *ngIf="auth.user$ | async as user">
+    <!-- <pre>{{ user | json }}</pre> -->
+    <button mat-raised-button color="primary" (click)="auth.signOut()">
+      Sign Out
+    </button>
+  </ng-container>
+</header>

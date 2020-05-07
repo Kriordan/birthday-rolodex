@@ -1,0 +1,74 @@
+<main class="main">
+  <section class="person-form-section">
+    <form [formGroup]="personForm" class="person-form" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>First Name:</mat-label>
+        <input matInput type="text" formControlName="firstName" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Last Name:</mat-label>
+        <input matInput type="text" formControlName="lastName" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Birthdate:</mat-label>
+        <input matInput formControlName="birthdate" [matDatepicker]="picker" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!personForm.valid"
+      >
+        Submit
+      </button>
+    </form>
+  </section>
+
+  <section class="card-collection">
+    <mat-card *ngFor="let person of persons | async" class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title
+          >{{ person.firstName }} {{ person.lastName }}</mat-card-title
+        >
+        <mat-card-subtitle>{{
+          person.birthdate.toDate() | date: 'MMMM d'
+        }}</mat-card-subtitle>
+        <mat-icon
+          class="card-delete"
+          icon
+          delete
+          color="error"
+          (click)="deletePerson(person.personId)"
+          >delete</mat-icon
+        >
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="https://thumbs.dreamstime.com/b/ham-hock-8724052.jpg"
+        alt="Drawing of a ham bone"
+      />
+      <mat-card-content>
+        <h3>Current Interests:</h3>
+        <ul>
+          <li>Weightlifting</li>
+          <li>Moving to the South</li>
+        </ul>
+        <h3>Gift Ideas:</h3>
+        <ul>
+          <li>Amazon gift card</li>
+          <li>Hoodie</li>
+        </ul>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">CREATE REMINDER</button>
+        <button mat-raised-button color="primary">CALL</button>
+      </mat-card-actions>
+    </mat-card>
+  </section>
+</main>
