@@ -8,6 +8,7 @@ import {
 
 import { AuthService } from '../services/auth.service';
 import { Person } from '../person';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -28,9 +29,42 @@ export class HomeComponent implements OnInit {
   constructor(private afs: AngularFirestore, public auth: AuthService) {}
 
   ngOnInit() {
-    this.personsCollection = this.afs.collection<Person>('persons');
-    this.persons = this.personsCollection.valueChanges({ idField: 'personId' });
-    this.persons.subscribe((x) => console.log(x));
+    this.personsCollection = this.afs.collection<Person>('persons', (ref) =>
+      ref.orderBy('birthdate')
+    );
+    this.persons = this.personsCollection
+      .valueChanges({
+        idField: 'personId',
+      })
+      .pipe(
+        map((data: any) => {
+          return data
+            .map((person) => {
+              const jsDateObj = person.birthdate.toDate();
+              const currentYear = new Date().getFullYear();
+              const currentYearBirthday = new Date(
+                currentYear,
+                jsDateObj.getMonth(),
+                jsDateObj.getDay()
+              );
+              const now = new Date().valueOf();
+              if (currentYearBirthday.valueOf() < now) {
+                currentYearBirthday.setFullYear(currentYear + 1);
+              }
+              person.nextBirthday = currentYearBirthday.valueOf() - now;
+              return person;
+            })
+            .sort((a, b) => {
+              return a.nextBirthday < b.nextBirthday
+                ? -1
+                : a.nextBirthday > b.nextBirthday
+                ? 1
+                : 0;
+            });
+        })
+      );
+
+    // this.persons.subscribe((x) => console.log(x));
   }
 
   onSubmit() {
