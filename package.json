@@ -30,7 +30,7 @@
     "@angular/router": "~10.1.6",
     "firebase": "^7.13.2",
     "normalize.css": "^8.0.1",
-    "rxjs": "~6.5.4",
+    "rxjs": "~6.6.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
